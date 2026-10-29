@@ -1,0 +1,51 @@
+# Decap CMS lê este arquivo e monta o painel a partir dele.
+
+backend:
+  name: github            # onde o conteúdo é salvo: commits direto neste repositório
+  repo: edubolla/cms
+  branch: main
+
+# Em localhost, o painel conversa com o decap-server (npm run dev)
+# e grava direto nos arquivos locais, sem login e sem commit.
+local_backend: true
+
+# Fluxo editorial opcional (rascunho -> revisão -> publicado, via Pull Requests):
+# publish_mode: editorial_workflow
+
+media_folder: uploads        # onde as imagens são gravadas no repositório
+public_folder: /uploads      # como as imagens são referenciadas no site
+
+site_url: https://edubolla.github.io/cms
+display_url: https://edubolla.github.io/cms
+locale: pt
+
+collections:
+  # Coleção de pasta: cada arquivo .md em content/posts é uma entrada
+  - name: posts
+    label: Posts
+    label_singular: Post
+    folder: content/posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    summary: "{{title}} · {{date}}"
+    fields:
+      - { label: Título, name: title, widget: string }
+      - { label: Data, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: Resumo, name: description, widget: text, required: false }
+      - { label: Imagem de capa, name: cover, widget: image, required: false }
+      - { label: Tags, name: tags, widget: list, required: false }
+      - { label: Publicado, name: published, widget: boolean, default: true }
+      - { label: Conteúdo, name: body, widget: markdown }
+
+  # Coleção de arquivos: um arquivo fixo, com campos definidos por você
+  - name: settings
+    label: Configurações
+    files:
+      - label: Dados do site
+        name: site
+        file: content/settings/site.json
+        fields:
+          - { label: Nome do site, name: title, widget: string }
+          - { label: Slogan, name: tagline, widget: string }
+          - { label: Email de contato, name: email, widget: string, required: false }

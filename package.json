@@ -1,0 +1,32 @@
+{
+  "name": "cms-decap-demo",
+  "version": "1.0.0",
+  "description": "Demo do Decap CMS com mini gerador estático",
+  "scripts": {
+    "build": "node build.mjs",
+    "build:watch": "node --watch-path=content --watch-path=admin --watch-path=uploads --watch-path=build.mjs build.mjs",
+    "serve": "http-server dist -p 8080 -c-1 --silent",
+    "proxy": "decap-server",
+    "dev": "npm run build && concurrently -k -n site,proxy,build \"npm:serve\" \"npm:proxy\" \"npm:build:watch\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edubolla/cms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/edubolla/cms/issues"
+  },
+  "homepage": "https://github.com/edubolla/cms#readme",
+  "devDependencies": {
+    "concurrently": "^10.0.6",
+    "decap-server": "^3.11.6",
+    "gray-matter": "^4.0.3",
+    "http-server": "^14.1.1",
+    "marked": "^18.1.2"
+  },
+  "private": true
+}
