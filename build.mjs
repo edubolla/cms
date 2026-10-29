@@ -36,17 +36,32 @@ for (const file of (await readdir('content/posts')).filter(f => f.endsWith('.md'
 }
 posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+const toRoot = html => html.replaceAll('href="./"', 'href="../"').replaceAll('href="admin/"', 'href="../admin/"');
+
 for (const p of posts) {
   const tags = (p.tags ?? []).map(t => `<span class="tag">${esc(t)}</span>`).join('');
-  const cover = p.cover ? `<img src=".${esc(p.cover)}" alt="">` : '';
-  await writeFile(`dist/posts/${p.slug}.html`, layout(p.title, `<article>
+  const cover = p.cover ? `<img src="..${esc(p.cover)}" alt="">` : '';
+  await writeFile(`dist/posts/${p.slug}.html`, toRoot(layout(p.title, `<article>
 <h2>${esc(p.title)}</h2><p class="meta">${fmt(p.date)} ${tags}</p>${cover}${p.html}
-<p><a href="../">← Voltar</a></p></article>`).replaceAll('href="./"', 'href="../"').replaceAll('href="admin/"', 'href="../admin/"'));
+<p><a href="index.html">← Todos os posts</a></p></article>`)));
 }
 
-const list = posts.map(p => `<li><a href="posts/${p.slug}.html">${esc(p.title)}</a> <span class="meta">${fmt(p.date)}</span>
+const list = posts.map(p => `<li><a href="${p.slug}.html">${esc(p.title)}</a> <span class="meta">${fmt(p.date)}</span>
 ${p.description ? `<br><span class="meta">${esc(p.description)}</span>` : ''}</li>`).join('\n');
-await writeFile('dist/index.html', layout(site.title, `<h2>Posts</h2><ul>${list}</ul>`));
+await writeFile('dist/posts/index.html', toRoot(layout(`Posts · ${site.title}`, `<h2>Posts</h2><ul>${list}</ul>`)));
+
+// Home provisória
+await writeFile('dist/index.html', `<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(site.title)} · Em construção</title>
+<style>
+  body{margin:0;min-height:100vh;display:grid;place-items:center;text-align:center;font:18px/1.5 system-ui,sans-serif;color:#222;background:#fafafa}
+  h1{font-size:clamp(2rem,6vw,3.5rem);letter-spacing:.05em;margin:0 0 .5rem}
+  p{color:#666;margin:0}
+</style></head><body><main>
+<h1>EM CONSTRUÇÃO</h1>
+<p>${esc(site.title)}</p>
+</main></body></html>`);
 
 await cp('admin', 'dist/admin', { recursive: true });
 await cp('uploads', 'dist/uploads', { recursive: true });

@@ -10,7 +10,8 @@ npm install
 npm run dev
 ```
 
-- Site: http://localhost:8080
+- Home (em construção): http://localhost:8080
+- Posts: http://localhost:8080/posts/
 - Painel: http://localhost:8080/admin/ (clique em **Entrar**, não pede senha em modo local)
 
 Edite um post no painel e veja o arquivo mudar em `content/posts/` (`git status` mostra a alteração).
