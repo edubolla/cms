@@ -1,0 +1,29 @@
+---
+import { contact } from '../lib/contact';
+import home from '../../content/home.json';
+const h = home.hero;
+const cities = home.regions.areas.flatMap(a => a.cities);
+---
+<section class="hero" id="topo">
+  <canvas class="hero__canvas" data-network aria-hidden="true"></canvas>
+  <div class="hero__fade" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <p class="pill" data-reveal>{h.eyebrow}</p>
+    <h1 class="hero__title" data-reveal>
+      {h.titleStart}
+      <span class="rotator" data-rotator data-words={JSON.stringify(h.rotatingWords)}>
+        <span class="rotator__word">{h.rotatingWords[0]}</span>
+      </span>
+    </h1>
+    <p class="lead" data-reveal>{h.text}</p>
+    <div class="hero__actions" data-reveal>
+      <a class="btn" href={contact.href} target={contact.external ? '_blank' : undefined} rel={contact.external ? 'noopener' : undefined}>{h.primaryCta}</a>
+      <a class="btn btn--ghost" href="#processo">{h.secondaryCta} →</a>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      {[0, 1].map(() => <ul>{cities.map(c => <li>{c}</li>)}</ul>)}
+    </div>
+  </div>
+</section>

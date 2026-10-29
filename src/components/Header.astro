@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import { contact, site } from '../lib/contact';
+
+const hasPosts = (await getCollection('blog', p => p.data.published)).length > 0;
+const links = [
+  { href: '/#servicos', label: 'Serviços' },
+  { href: '/#processo', label: 'Como trabalhamos' },
+  { href: '/#regioes', label: 'Regiões' },
+  { href: '/#duvidas', label: 'Dúvidas' },
+  ...(hasPosts ? [{ href: '/blog/', label: 'Blog' }] : []),
+];
+---
+<header class="header" data-header>
+  <div class="container header__inner">
+    <a class="brand" href="/" aria-label={`${site.name}, página inicial`}>
+      <img src="/brand/icon.png" alt="" width="34" height="29" />
+      <span>METINGER <b>TECH</b></span>
+    </a>
+    <nav class="nav" id="menu" aria-label="Principal">
+      {links.map(l => <a href={l.href}>{l.label}</a>)}
+      <a class="btn btn--small nav__cta" href={contact.href} target={contact.external ? '_blank' : undefined} rel={contact.external ? 'noopener' : undefined}>Pedir orçamento</a>
+    </nav>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu" data-burger>
+      <span></span><span></span>
+    </button>
+  </div>
+</header>

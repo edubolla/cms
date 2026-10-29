@@ -1,0 +1,16 @@
+---
+import Section from './Section.astro';
+import home from '../../content/home.json';
+const s = home.services;
+---
+<Section id="servicos" eyebrow={s.eyebrow} title={s.title}>
+  <div class="grid grid--3">
+    {s.items.map((it, i) => (
+      <article class="card" data-reveal data-spot style={`--i:${i}`}>
+        <span class="card__num">{String(i + 1).padStart(2, '0')}</span>
+        <h3>{it.title}</h3>
+        <p>{it.text}</p>
+      </article>
+    ))}
+  </div>
+</Section>

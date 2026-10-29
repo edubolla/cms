@@ -1,0 +1,160 @@
+# ──────────────────────────────────────────────────────────────────────────
+# Este arquivo é a "planta" do painel /admin. Cada bloco abaixo vira uma tela.
+# Mude aqui para criar campos novos; o site lê os mesmos arquivos em content/.
+# ──────────────────────────────────────────────────────────────────────────
+
+# Onde o conteúdo é salvo: cada "Publicar" vira um commit neste repositório.
+backend:
+  name: github
+  repo: edubolla/cms
+  branch: main
+  base_url: https://cms-ivory-chi.vercel.app   # site que hospeda as funções de login
+  auth_endpoint: api/auth                       # api/auth.js + api/callback.js (OAuth do GitHub)
+
+# Em localhost o painel grava direto nos arquivos da pasta (sem login, sem commit).
+local_backend: true
+
+# Imagens enviadas pelo painel: salvas em public/uploads, servidas em /uploads
+media_folder: public/uploads
+public_folder: /uploads
+
+site_url: https://cms-ivory-chi.vercel.app
+display_url: https://cms-ivory-chi.vercel.app
+locale: pt
+
+collections:
+  # ── Textos da página inicial e dados da empresa (arquivos únicos) ─────────
+  - name: pagina
+    label: Página inicial
+    files:
+      - label: Textos da home
+        name: home
+        file: content/home.json
+        fields:
+          - label: Google (título e descrição que aparecem na busca)
+            name: seo
+            widget: object
+            fields:
+              - { label: Título da página, name: title, widget: string, hint: "Ideal: até 60 caracteres, com 'Criação de Sites em Novo Hamburgo'" }
+              - { label: Descrição, name: description, widget: text, hint: "Ideal: até 160 caracteres" }
+
+          - label: Topo (hero)
+            name: hero
+            widget: object
+            fields:
+              - { label: Frase pequena acima do título, name: eyebrow, widget: string }
+              - { label: Início do título, name: titleStart, widget: string }
+              - { label: Palavras que se alternam no título, name: rotatingWords, widget: list, hint: "Uma por item. Aparecem logo depois do início do título." }
+              - { label: Texto de apoio, name: text, widget: text }
+              - { label: Botão principal, name: primaryCta, widget: string }
+              - { label: Botão secundário, name: secondaryCta, widget: string }
+
+          - label: Serviços
+            name: services
+            widget: object
+            fields:
+              - { label: Frase pequena, name: eyebrow, widget: string }
+              - { label: Título, name: title, widget: string }
+              - label: Serviços
+                name: items
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Título, name: title, widget: string }
+                  - { label: Texto, name: text, widget: text }
+
+          - label: Diferenciais
+            name: differentials
+            widget: object
+            fields:
+              - { label: Frase pequena, name: eyebrow, widget: string }
+              - { label: Título, name: title, widget: string }
+              - label: Diferenciais
+                name: items
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Título, name: title, widget: string }
+                  - { label: Texto, name: text, widget: text }
+
+          - label: Como trabalhamos
+            name: process
+            widget: object
+            fields:
+              - { label: Frase pequena, name: eyebrow, widget: string }
+              - { label: Título, name: title, widget: string }
+              - label: Etapas
+                name: steps
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Título, name: title, widget: string }
+                  - { label: Texto, name: text, widget: text }
+
+          - label: Regiões atendidas
+            name: regions
+            widget: object
+            fields:
+              - { label: Frase pequena, name: eyebrow, widget: string }
+              - { label: Título, name: title, widget: string }
+              - { label: Texto, name: text, widget: text }
+              - label: Regiões
+                name: areas
+                widget: list
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: Nome da região, name: name, widget: string }
+                  - { label: Cidades, name: cities, widget: list }
+
+          - label: Perguntas frequentes
+            name: faq
+            widget: object
+            fields:
+              - { label: Frase pequena, name: eyebrow, widget: string }
+              - { label: Título, name: title, widget: string }
+              - label: Perguntas
+                name: items
+                widget: list
+                summary: "{{fields.question}}"
+                fields:
+                  - { label: Pergunta, name: question, widget: string }
+                  - { label: Resposta, name: answer, widget: text }
+
+          - label: Chamada final
+            name: cta
+            widget: object
+            fields:
+              - { label: Título, name: title, widget: string }
+              - { label: Texto, name: text, widget: text }
+              - { label: Botão, name: button, widget: string }
+
+      - label: Dados da empresa e contato
+        name: site
+        file: content/site.json
+        fields:
+          - { label: Nome da empresa, name: name, widget: string }
+          - { label: Cidade, name: city, widget: string }
+          - { label: Estado (sigla), name: state, widget: string }
+          - { label: E-mail de contato, name: email, widget: string }
+          - { label: WhatsApp (com DDD), name: whatsapp, widget: string, required: false, hint: "Ex.: 51999999999. Se preencher, todos os botões de contato passam a abrir o WhatsApp." }
+          - { label: Mensagem inicial do WhatsApp, name: whatsappMessage, widget: text, required: false }
+          - { label: Instagram (link completo), name: instagram, widget: string, required: false }
+          - { label: LinkedIn (link completo), name: linkedin, widget: string, required: false }
+
+  # ── Blog: um arquivo .md por post ────────────────────────────────────────
+  - name: blog
+    label: Blog
+    label_singular: Post
+    folder: content/blog
+    create: true
+    extension: md
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} · {{date}}"
+    fields:
+      - { label: Título, name: title, widget: string }
+      - { label: Data, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: Resumo (aparece no Google e na lista), name: description, widget: text, required: false }
+      - { label: Imagem de capa, name: cover, widget: image, required: false }
+      - { label: Tags, name: tags, widget: list, required: false }
+      - { label: Publicado, name: published, widget: boolean, default: true }
+      - { label: Conteúdo, name: body, widget: markdown }

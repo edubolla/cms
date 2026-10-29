@@ -1,0 +1,18 @@
+---
+import { contact, site } from '../lib/contact';
+import home from '../../content/home.json';
+const c = home.cta;
+---
+<section class="section cta" id="contato">
+  <div class="container">
+    <div class="cta__panel" data-reveal data-spot>
+      <h2>{c.title}</h2>
+      <p class="lead">{c.text}</p>
+      <div class="hero__actions">
+        <a class="btn" href={contact.href} target={contact.external ? '_blank' : undefined} rel={contact.external ? 'noopener' : undefined}>{c.button}</a>
+        {contact.external && <a class="btn btn--ghost" href={`mailto:${site.email}`}>{site.email}</a>}
+      </div>
+      {!contact.external && <p class="cta__mail muted">ou escreva para <a href={`mailto:${site.email}`}>{site.email}</a></p>}
+    </div>
+  </div>
+</section>

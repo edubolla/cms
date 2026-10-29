@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://cms-ivory-chi.vercel.app/sitemap-index.xml

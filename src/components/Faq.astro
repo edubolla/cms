@@ -1,0 +1,15 @@
+---
+import Section from './Section.astro';
+import home from '../../content/home.json';
+const f = home.faq;
+---
+<Section id="duvidas" eyebrow={f.eyebrow} title={f.title}>
+  <div class="faq">
+    {f.items.map(it => (
+      <details class="faq__item" data-reveal>
+        <summary>{it.question}</summary>
+        <p>{it.answer}</p>
+      </details>
+    ))}
+  </div>
+</Section>

@@ -1,0 +1,16 @@
+---
+import Section from './Section.astro';
+import home from '../../content/home.json';
+const p = home.process;
+---
+<Section id="processo" eyebrow={p.eyebrow} title={p.title}>
+  <ol class="steps">
+    {p.steps.map((s, i) => (
+      <li class="step" data-reveal style={`--i:${i}`}>
+        <span class="step__num">{String(i + 1).padStart(2, '0')}</span>
+        <h3>{s.title}</h3>
+        <p>{s.text}</p>
+      </li>
+    ))}
+  </ol>
+</Section>

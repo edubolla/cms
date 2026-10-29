@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Differentials from '../components/Differentials.astro';
+import Process from '../components/Process.astro';
+import Regions from '../components/Regions.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+import home from '../../content/home.json';
+import { site } from '../lib/contact';
+
+const url = Astro.site!.href;
+const digits = site.whatsapp.replace(/\D/g, '');
+const business = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${url}#empresa`,
+  name: site.name,
+  url,
+  logo: new URL('/brand/logo.png', url).href,
+  image: new URL('/og.png', url).href,
+  description: home.seo.description,
+  email: site.email,
+  ...(digits && { telephone: `+${digits.startsWith('55') ? digits : `55${digits}`}` }),
+  address: { '@type': 'PostalAddress', addressLocality: site.city, addressRegion: site.state, addressCountry: 'BR' },
+  areaServed: home.regions.areas.flatMap(a => a.cities).map(name => ({ '@type': 'City', name })),
+  serviceType: ['Criação de sites', 'Redesign de sites', 'Landing pages', 'SEO local'],
+  sameAs: [site.instagram, site.linkedin].filter(Boolean),
+};
+const faq = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: home.faq.items.map(i => ({ '@type': 'Question', name: i.question, acceptedAnswer: { '@type': 'Answer', text: i.answer } })),
+};
+---
+<Base title={home.seo.title} description={home.seo.description} jsonLd={[business, faq]}>
+  <Hero />
+  <Services />
+  <Differentials />
+  <Process />
+  <Regions />
+  <Faq />
+  <Cta />
+</Base>

@@ -1,0 +1,18 @@
+---
+import Section from './Section.astro';
+import home from '../../content/home.json';
+const d = home.differentials;
+---
+<Section class="section--alt" eyebrow={d.eyebrow} title={d.title}>
+  <div class="grid grid--2">
+    {d.items.map((it, i) => (
+      <article class="feature" data-reveal style={`--i:${i}`}>
+        <span class="feature__dot" aria-hidden="true"></span>
+        <div>
+          <h3>{it.title}</h3>
+          <p>{it.text}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</Section>

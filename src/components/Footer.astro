@@ -1,0 +1,32 @@
+---
+import { contact, site } from '../lib/contact';
+import home from '../../content/home.json';
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container footer__grid">
+    <div>
+      <img class="footer__logo" src="/brand/logo.png" alt={site.name} width="180" height="104" loading="lazy" />
+      <p class="muted">Criação de sites profissionais em {site.city}, {site.state} e região.</p>
+    </div>
+    <div>
+      <h2 class="footer__h">Contato</h2>
+      <ul class="plain">
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        {contact.external && <li><a href={contact.href} target="_blank" rel="noopener">WhatsApp</a></li>}
+        {site.instagram && <li><a href={site.instagram} target="_blank" rel="noopener">Instagram</a></li>}
+        {site.linkedin && <li><a href={site.linkedin} target="_blank" rel="noopener">LinkedIn</a></li>}
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer__h">Atendimento</h2>
+      <ul class="plain muted">
+        {home.regions.areas.map(a => <li>{a.name}</li>)}
+      </ul>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <span>© {year} {site.name}. Todos os direitos reservados.</span>
+    <a href="/#topo">Voltar ao topo ↑</a>
+  </div>
+</footer>

@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const posts = (await getCollection('blog', p => p.data.published)).sort((a, b) => +b.data.date - +a.data.date);
+const fmt = (d: Date) => d.toLocaleDateString('pt-BR', { timeZone: 'UTC', day: '2-digit', month: 'long', year: 'numeric' });
+---
+<Base title="Blog | Metinger Tech" description="Dicas sobre criação de sites, SEO local e presença digital para empresas de Novo Hamburgo e região.">
+  <div class="page container">
+    <p class="eyebrow">Blog</p>
+    <h1>Conteúdo sobre sites e presença digital</h1>
+    <p class="lead">Guias práticos para empresas de Novo Hamburgo e região.</p>
+    <ul class="post-list">
+      {posts.map(p => (
+        <li>
+          <a href={`/blog/${p.id}/`}>
+            <span class="post-meta">{fmt(p.data.date)}</span>
+            <h2>{p.data.title}</h2>
+            {p.data.description && <p class="muted">{p.data.description}</p>}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>

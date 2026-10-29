@@ -1,0 +1,16 @@
+---
+import Section from './Section.astro';
+import home from '../../content/home.json';
+const r = home.regions;
+---
+<Section id="regioes" class="section--alt" eyebrow={r.eyebrow} title={r.title}>
+  <p class="lead lead--section" data-reveal>{r.text}</p>
+  <div class="grid grid--4">
+    {r.areas.map((a, i) => (
+      <article class="region" data-reveal style={`--i:${i}`}>
+        <h3>{a.name}</h3>
+        <ul class="chips">{a.cities.map(c => <li>{c}</li>)}</ul>
+      </article>
+    ))}
+  </div>
+</Section>
