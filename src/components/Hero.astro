@@ -2,7 +2,6 @@
 import { contact } from '../lib/contact';
 import home from '../../content/home.json';
 const h = home.hero;
-const cities = home.regions.areas.flatMap(a => a.cities);
 ---
 <section class="hero" id="topo">
   <canvas class="hero__canvas" data-network aria-hidden="true"></canvas>
@@ -19,11 +18,6 @@ const cities = home.regions.areas.flatMap(a => a.cities);
     <div class="hero__actions" data-reveal>
       <a class="btn" href={contact.href} target={contact.external ? '_blank' : undefined} rel={contact.external ? 'noopener' : undefined}>{h.primaryCta}</a>
       <a class="btn btn--ghost" href="#processo">{h.secondaryCta} →</a>
-    </div>
-  </div>
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee__track">
-      {[0, 1].map(() => <ul>{cities.map(c => <li>{c}</li>)}</ul>)}
     </div>
   </div>
 </section>

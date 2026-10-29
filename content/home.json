@@ -1,13 +1,20 @@
 {
   "seo": {
     "title": "Criação de Sites em Novo Hamburgo | Metinger Tech",
-    "description": "Criação de sites profissionais em Novo Hamburgo e região: design sob medida, rápido, preparado para o Google e com painel para você editar. Atendemos Vale do Sinos, Grande Porto Alegre, Serra e Litoral Gaúcho."
+    "description": "Criação de sites em Novo Hamburgo e região: rápidos, otimizados para o Google e para IAs, com landing pages para Google Ads e painel para você editar."
   },
   "hero": {
     "eyebrow": "Criação de sites em Novo Hamburgo e região",
     "titleStart": "Sites profissionais que",
-    "rotatingWords": ["vendem por você", "passam confiança", "aparecem no Google", "carregam rápido", "geram contatos"],
-    "text": "A Metinger Tech cria o site da sua empresa com design sob medida, velocidade de verdade e um painel para você mesmo atualizar o conteúdo, sem depender de ninguém.",
+    "rotatingWords": [
+      "vendem por você",
+      "aparecem no Google",
+      "a IA recomenda",
+      "passam confiança",
+      "geram contatos",
+      "carregam rápido"
+    ],
+    "text": "A Metinger Tech cria o site da sua empresa com design sob medida, velocidade de verdade e estrutura para ser encontrado no Google e recomendado por inteligências artificiais, com painel para você mesmo atualizar o conteúdo.",
     "primaryCta": "Quero um site para minha empresa",
     "secondaryCta": "Ver como funciona"
   },
@@ -15,32 +22,99 @@
     "eyebrow": "O que fazemos",
     "title": "Tudo o que a sua empresa precisa para ser encontrada e escolhida.",
     "items": [
-      { "title": "Criação de sites", "text": "Sites institucionais rápidos, bonitos e organizados para transformar visitas em contatos." },
-      { "title": "Redesign de sites", "text": "Seu site atual está antigo, lento ou não passa confiança? Refazemos com uma nova cara e uma estrutura que funciona." },
-      { "title": "Landing pages", "text": "Páginas focadas em uma única ação, ideais para campanhas, lançamentos e anúncios." },
-      { "title": "Painel para você editar", "text": "Troque textos, imagens e publique novidades sozinho, em um painel simples. Sem ligar para o programador a cada ajuste." },
-      { "title": "Pronto para o Google", "text": "Estrutura técnica e conteúdo pensados para aparecer nas buscas da sua cidade e região." },
-      { "title": "Evolução contínua", "text": "O site não termina na publicação. Combinamos os próximos passos para ele crescer junto com o seu negócio." }
+      {
+        "title": "Criação de sites",
+        "text": "Sites institucionais rápidos, bonitos e organizados para transformar visitas em contatos."
+      },
+      {
+        "title": "Redesign de sites",
+        "text": "Seu site atual está antigo, lento ou não passa confiança? Refazemos com uma nova cara e uma estrutura que funciona."
+      },
+      {
+        "title": "Landing pages para anúncios",
+        "text": "Páginas feitas para uma única ação, com a mensagem do anúncio e a sua oferta lado a lado, para transformar o clique em contato."
+      },
+      {
+        "title": "Google Ads e tráfego pago",
+        "text": "Campanhas no Google Ads ligadas a landing pages próprias, para o dinheiro do anúncio não se perder em uma página genérica."
+      },
+      {
+        "title": "Visibilidade no Google e na IA",
+        "text": "Estrutura técnica, dados estruturados e conteúdo claros para ser encontrado no Google e citado por assistentes de inteligência artificial."
+      },
+      {
+        "title": "Painel para você editar",
+        "text": "Troque textos, imagens e publique novidades sozinho, em um painel simples. Sem ligar para o programador a cada ajuste."
+      }
     ]
+  },
+  "visibility": {
+    "eyebrow": "Google + inteligência artificial",
+    "title": "Hoje as pessoas perguntam para a IA antes de pesquisar no Google. Seu site precisa estar nos dois.",
+    "text": "Cada vez mais clientes pedem ao ChatGPT, ao Gemini e a outros assistentes uma indicação de quem contratar. Para ser citado, o site precisa ser claro, bem estruturado e fácil de ler tanto por buscadores quanto por IAs. É isso que construímos em cada projeto.",
+    "items": [
+      {
+        "title": "Indexação no Google",
+        "text": "Site rápido, com mapa do site e títulos pensados para o Google encontrar e entender cada página."
+      },
+      {
+        "title": "Legível para IAs",
+        "text": "Conteúdo organizado e dados estruturados com as informações da empresa, para os assistentes de IA entenderem o que você faz, para quem e onde atende."
+      },
+      {
+        "title": "Autoridade na sua região",
+        "text": "Páginas e conteúdos pensados para a sua cidade, para você aparecer quando alguém procura o seu serviço perto dele."
+      }
+    ],
+    "case": {
+      "label": "Caso real",
+      "title": "Como o site da GDD Móveis Modernos passou a ser recomendado por uma IA",
+      "cta": "Ler o caso",
+      "href": "/blog/2026-10-29-como-o-site-da-gdd-passou-a-ser-recomendado-pela-ia/"
+    }
   },
   "differentials": {
     "eyebrow": "Por que a Metinger Tech",
     "title": "Um site feito com intenção, não montado a partir de um modelo pronto.",
     "items": [
-      { "title": "Design sob medida", "text": "Cada projeto parte da sua marca, do seu público e do que você quer que o visitante faça." },
-      { "title": "Velocidade por padrão", "text": "Páginas leves e otimizadas. Quem espera demais, vai embora." },
-      { "title": "Você no controle", "text": "O conteúdo é seu e é fácil de editar. Nada de ficar refém de quem fez o site." },
-      { "title": "Atendimento direto", "text": "Você fala com quem cria o seu site, em Novo Hamburgo ou em qualquer cidade da região." }
+      {
+        "title": "Design sob medida",
+        "text": "Cada projeto parte da sua marca, do seu público e do que você quer que o visitante faça."
+      },
+      {
+        "title": "Velocidade por padrão",
+        "text": "Páginas leves e otimizadas. Quem espera demais, vai embora."
+      },
+      {
+        "title": "Você no controle",
+        "text": "O conteúdo é seu e é fácil de editar. Nada de ficar refém de quem fez o site."
+      },
+      {
+        "title": "Atendimento direto",
+        "text": "Você fala com quem cria o seu site, em Novo Hamburgo ou em qualquer cidade da região."
+      }
     ]
   },
   "process": {
     "eyebrow": "Como trabalhamos",
     "title": "Clareza em cada etapa.",
     "steps": [
-      { "title": "Conversa e diagnóstico", "text": "Entendemos o seu negócio, o seu público e o que o site precisa resolver." },
-      { "title": "Direção", "text": "Definimos mensagem, estrutura das páginas e linguagem visual antes de construir." },
-      { "title": "Construção", "text": "Desenvolvemos o site, ajustamos com você e testamos em celular e computador." },
-      { "title": "Publicação e evolução", "text": "Colocamos no ar, ensinamos a editar e deixamos o caminho aberto para o próximo passo." }
+      {
+        "title": "Conversa e diagnóstico",
+        "text": "Entendemos o seu negócio, o seu público e o que o site precisa resolver."
+      },
+      {
+        "title": "Direção",
+        "text": "Definimos mensagem, estrutura das páginas e linguagem visual antes de construir."
+      },
+      {
+        "title": "Construção",
+        "text": "Desenvolvemos o site, ajustamos com você e testamos em celular e computador."
+      },
+      {
+        "title": "Publicação e evolução",
+        "text": "Colocamos no ar, ensinamos a editar e deixamos o caminho aberto para o próximo passo."
+      }
     ]
   },
   "regions": {
@@ -48,22 +122,90 @@
     "title": "Criação de sites em Novo Hamburgo e em toda a região.",
     "text": "Com base em Novo Hamburgo, atendemos empresas do Vale do Sinos, da Grande Porto Alegre, da Serra Gaúcha e do Litoral Gaúcho, presencialmente ou online.",
     "areas": [
-      { "name": "Vale do Sinos", "cities": ["Novo Hamburgo", "São Leopoldo", "Campo Bom", "Sapiranga", "Estância Velha", "Ivoti", "Dois Irmãos"] },
-      { "name": "Grande Porto Alegre", "cities": ["Porto Alegre", "Canoas", "Gravataí", "Cachoeirinha", "Esteio", "Sapucaia do Sul", "Viamão"] },
-      { "name": "Serra Gaúcha", "cities": ["Caxias do Sul", "Bento Gonçalves", "Gramado", "Canela", "Farroupilha", "Garibaldi"] },
-      { "name": "Litoral Gaúcho", "cities": ["Capão da Canoa", "Torres", "Tramandaí", "Xangri-lá", "Imbé", "Osório"] }
+      {
+        "name": "Vale do Sinos",
+        "cities": [
+          "Novo Hamburgo",
+          "São Leopoldo",
+          "Campo Bom",
+          "Sapiranga",
+          "Estância Velha",
+          "Ivoti",
+          "Dois Irmãos"
+        ]
+      },
+      {
+        "name": "Grande Porto Alegre",
+        "cities": [
+          "Porto Alegre",
+          "Canoas",
+          "Gravataí",
+          "Cachoeirinha",
+          "Esteio",
+          "Sapucaia do Sul",
+          "Viamão"
+        ]
+      },
+      {
+        "name": "Serra Gaúcha",
+        "cities": [
+          "Caxias do Sul",
+          "Bento Gonçalves",
+          "Gramado",
+          "Canela",
+          "Farroupilha",
+          "Garibaldi"
+        ]
+      },
+      {
+        "name": "Litoral Gaúcho",
+        "cities": [
+          "Capão da Canoa",
+          "Torres",
+          "Tramandaí",
+          "Xangri-lá",
+          "Imbé",
+          "Osório"
+        ]
+      }
     ]
   },
   "faq": {
     "eyebrow": "Perguntas frequentes",
     "title": "O que você precisa saber antes de começar.",
     "items": [
-      { "question": "Quanto custa criar um site em Novo Hamburgo?", "answer": "O valor depende do que a sua empresa precisa: número de páginas, funcionalidades e conteúdo. Por isso cada projeto é orçado individualmente. Conte o que você quer e enviamos uma proposta clara, sem compromisso." },
-      { "question": "Quanto tempo leva para o site ficar pronto?", "answer": "Depende do tamanho do projeto e da agilidade no retorno de textos e imagens. O cronograma é combinado na proposta, antes de começar." },
-      { "question": "Meu site vai aparecer no Google?", "answer": "Entregamos o site com a base técnica de SEO bem feita e conteúdo pensado para a sua cidade. A posição exata depende da concorrência e de um trabalho contínuo, e ninguém sério promete o primeiro lugar." },
-      { "question": "Eu consigo editar o site sozinho depois?", "answer": "Sim. O site vem com um painel simples para você alterar textos, trocar imagens e publicar novidades, sem mexer em código." },
-      { "question": "Vocês atendem empresas de fora de Novo Hamburgo?", "answer": "Sim. Atendemos o Vale do Sinos, a Grande Porto Alegre, a Serra Gaúcha e o Litoral Gaúcho, com reuniões presenciais ou por vídeo." },
-      { "question": "Já tenho um site, mas ele está desatualizado. Dá para refazer?", "answer": "Dá. Fazemos o redesign aproveitando o que já funciona, e entregamos uma estrutura mais moderna, rápida e fácil de atualizar." }
+      {
+        "question": "Quanto custa criar um site em Novo Hamburgo?",
+        "answer": "O valor depende do que a sua empresa precisa: número de páginas, funcionalidades e conteúdo. Por isso cada projeto é orçado individualmente. Conte o que você quer e enviamos uma proposta clara, sem compromisso."
+      },
+      {
+        "question": "Quanto tempo leva para o site ficar pronto?",
+        "answer": "Depende do tamanho do projeto e da agilidade no retorno de textos e imagens. O cronograma é combinado na proposta, antes de começar."
+      },
+      {
+        "question": "Meu site vai aparecer no Google?",
+        "answer": "Entregamos o site com a base técnica de SEO bem feita e conteúdo pensado para a sua cidade. A posição exata depende da concorrência e de um trabalho contínuo, e ninguém sério promete o primeiro lugar."
+      },
+      {
+        "question": "Meu site pode ser recomendado pelo ChatGPT e por outras IAs?",
+        "answer": "Podemos preparar o site para isso: conteúdo claro, dados estruturados e informações consistentes sobre a sua empresa. Nenhuma IA garante que vai citar um site, mas um site bem estruturado tem muito mais chance. Mostramos um caso real no nosso blog."
+      },
+      {
+        "question": "Vocês fazem anúncios no Google Ads?",
+        "answer": "Sim. Criamos campanhas no Google Ads sempre ligadas a landing pages feitas para o anúncio. Assim você investe em tráfego pago com uma página pensada para converter, e não com a home do site."
+      },
+      {
+        "question": "Eu consigo editar o site sozinho depois?",
+        "answer": "Sim. O site vem com um painel simples para você alterar textos, trocar imagens e publicar novidades, sem mexer em código."
+      },
+      {
+        "question": "Vocês atendem empresas de fora de Novo Hamburgo?",
+        "answer": "Sim. Atendemos o Vale do Sinos, a Grande Porto Alegre, a Serra Gaúcha e o Litoral Gaúcho, com reuniões presenciais ou por vídeo."
+      },
+      {
+        "question": "Já tenho um site, mas ele está desatualizado. Dá para refazer?",
+        "answer": "Dá. Fazemos o redesign aproveitando o que já funciona, e entregamos uma estrutura mais moderna, rápida e fácil de atualizar."
+      }
     ]
   },
   "cta": {

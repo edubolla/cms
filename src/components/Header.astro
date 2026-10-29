@@ -5,6 +5,7 @@ import { contact, site } from '../lib/contact';
 const hasPosts = (await getCollection('blog', p => p.data.published)).length > 0;
 const links = [
   { href: '/#servicos', label: 'Serviços' },
+  { href: '/#visibilidade', label: 'Google e IA' },
   { href: '/#processo', label: 'Como trabalhamos' },
   { href: '/#regioes', label: 'Regiões' },
   { href: '/#duvidas', label: 'Dúvidas' },

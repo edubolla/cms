@@ -63,6 +63,30 @@ collections:
                   - { label: Título, name: title, widget: string }
                   - { label: Texto, name: text, widget: text }
 
+          - label: Google e IA (visibilidade)
+            name: visibility
+            widget: object
+            fields:
+              - { label: Frase pequena, name: eyebrow, widget: string }
+              - { label: Título, name: title, widget: string }
+              - { label: Texto, name: text, widget: text }
+              - label: Pontos
+                name: items
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Título, name: title, widget: string }
+                  - { label: Texto, name: text, widget: text }
+              - label: Destaque com caso real
+                name: case
+                widget: object
+                required: false
+                fields:
+                  - { label: Etiqueta, name: label, widget: string }
+                  - { label: Título, name: title, widget: string }
+                  - { label: Texto do link, name: cta, widget: string }
+                  - { label: Endereço do artigo, name: href, widget: string, hint: "Ex.: /blog/nome-do-post/" }
+
           - label: Diferenciais
             name: differentials
             widget: object

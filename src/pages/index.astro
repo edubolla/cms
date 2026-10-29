@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import Services from '../components/Services.astro';
+import Visibility from '../components/Visibility.astro';
 import Differentials from '../components/Differentials.astro';
 import Process from '../components/Process.astro';
 import Regions from '../components/Regions.astro';
@@ -25,7 +26,7 @@ const business = {
   ...(digits && { telephone: `+${digits.startsWith('55') ? digits : `55${digits}`}` }),
   address: { '@type': 'PostalAddress', addressLocality: site.city, addressRegion: site.state, addressCountry: 'BR' },
   areaServed: home.regions.areas.flatMap(a => a.cities).map(name => ({ '@type': 'City', name })),
-  serviceType: ['Criação de sites', 'Redesign de sites', 'Landing pages', 'SEO local'],
+  serviceType: ['Criação de sites', 'Redesign de sites', 'Landing pages para anúncios', 'Google Ads', 'SEO local', 'Otimização para buscas com IA'],
   sameAs: [site.instagram, site.linkedin].filter(Boolean),
 };
 const faq = {
@@ -37,6 +38,7 @@ const faq = {
 <Base title={home.seo.title} description={home.seo.description} jsonLd={[business, faq]}>
   <Hero />
   <Services />
+  <Visibility />
   <Differentials />
   <Process />
   <Regions />

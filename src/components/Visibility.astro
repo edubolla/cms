@@ -1,0 +1,26 @@
+---
+import Section from './Section.astro';
+import home from '../../content/home.json';
+const v = home.visibility;
+---
+<Section id="visibilidade" class="section--alt" eyebrow={v.eyebrow} title={v.title}>
+  <p class="lead lead--wide" data-reveal>{v.text}</p>
+  <div class="grid grid--3">
+    {v.items.map((it, i) => (
+      <article class="card" data-reveal data-spot style={`--i:${i}`}>
+        <span class="card__num">{String(i + 1).padStart(2, '0')}</span>
+        <h3>{it.title}</h3>
+        <p>{it.text}</p>
+      </article>
+    ))}
+  </div>
+  {v.case && (
+    <a class="callout" href={v.case.href} data-reveal>
+      <span>
+        <span class="callout__label">{v.case.label}</span>
+        <span class="callout__title">{v.case.title}</span>
+      </span>
+      <span class="callout__cta">{v.case.cta} →</span>
+    </a>
+  )}
+</Section>
