@@ -4,6 +4,8 @@ backend:
   name: github            # onde o conteúdo é salvo: commits direto neste repositório
   repo: edubolla/cms
   branch: main
+  base_url: https://cms-ivory-chi.vercel.app   # site que hospeda as funções de login
+  auth_endpoint: api/auth                       # api/auth.js + api/callback.js (OAuth do GitHub)
 
 # Em localhost, o painel conversa com o decap-server (npm run dev)
 # e grava direto nos arquivos locais, sem login e sem commit.
