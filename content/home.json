@@ -40,7 +40,7 @@
       },
       {
         "title": "Visibilidade no Google e na IA",
-        "text": "Estrutura técnica, dados estruturados e conteúdo claros para ser encontrado no Google e citado por assistentes de inteligência artificial."
+        "text": "Estrutura técnica, dados estruturados e conteúdo claros para o seu site ser indexado no Google e em IAs como ChatGPT, Claude e Gemini."
       },
       {
         "title": "Painel para você editar",
@@ -51,15 +51,15 @@
   "visibility": {
     "eyebrow": "Google + inteligência artificial",
     "title": "Hoje as pessoas perguntam para a IA antes de pesquisar no Google. Seu site precisa estar nos dois.",
-    "text": "Cada vez mais clientes pedem ao ChatGPT, ao Gemini e a outros assistentes uma indicação de quem contratar. Para ser citado, o site precisa ser claro, bem estruturado e fácil de ler tanto por buscadores quanto por IAs. É isso que construímos em cada projeto.",
+    "text": "Cada vez mais clientes pedem ao ChatGPT, ao Claude, ao Gemini e a outros assistentes uma indicação de quem contratar. Para ser citado, o site precisa ser claro, bem estruturado e fácil de ler tanto por buscadores quanto por IAs. É isso que construímos em cada projeto.",
     "items": [
       {
         "title": "Indexação no Google",
         "text": "Site rápido, com mapa do site e títulos pensados para o Google encontrar e entender cada página."
       },
       {
-        "title": "Legível para IAs",
-        "text": "Conteúdo organizado e dados estruturados com as informações da empresa, para os assistentes de IA entenderem o que você faz, para quem e onde atende."
+        "title": "Indexação em IAs",
+        "text": "Indexamos o seu site em IAs como ChatGPT, Claude e Gemini: conteúdo organizado e dados estruturados para os assistentes entenderem o que você faz, para quem e onde atende."
       },
       {
         "title": "Autoridade na sua região",
@@ -187,7 +187,7 @@
         "answer": "Entregamos o site com a base técnica de SEO bem feita e conteúdo pensado para a sua cidade. A posição exata depende da concorrência e de um trabalho contínuo, e ninguém sério promete o primeiro lugar."
       },
       {
-        "question": "Meu site pode ser recomendado pelo ChatGPT e por outras IAs?",
+        "question": "Meu site pode ser recomendado pelo ChatGPT, Claude, Gemini e outras IAs?",
         "answer": "Podemos preparar o site para isso: conteúdo claro, dados estruturados e informações consistentes sobre a sua empresa. Nenhuma IA garante que vai citar um site, mas um site bem estruturado tem muito mais chance. Mostramos um caso real no nosso blog."
       },
       {
