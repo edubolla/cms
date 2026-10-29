@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <title>Painel · Decap CMS</title>
+    <!-- Caminho absoluto: sem isso, abrir /admin (sem a barra final) procura /config.yml e dá 404 -->
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
   </head>
   <body>
     <!-- O CMS inteiro é este único script. Ele lê o config.yml ao lado e monta a interface. -->
