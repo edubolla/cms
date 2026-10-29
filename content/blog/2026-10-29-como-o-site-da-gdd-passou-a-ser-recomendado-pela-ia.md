@@ -52,4 +52,4 @@ Vale ser honesto: **ninguém controla o que uma IA responde.** A resposta muda c
 4. Mantenha um **mapa do site** atualizado.
 5. Crie **páginas específicas** para cada serviço que você quer vender.
 
-Quer que o seu site seja encontrado no Google e também lembrado pelas inteligências artificiais? [Fale com a Metinger Tech](/#contato).
+Quer que o seu site seja encontrado no Google e também lembrado pelas inteligências artificiais? [Fale com a Metinger Tech no WhatsApp](https://wa.me/5551993022314?text=Ol%C3%A1%21%20Li%20o%20artigo%20sobre%20o%20site%20da%20GDD%20no%20blog%20da%20Metinger%20Tech%20e%20quero%20um%20site%20que%20a%20IA%20e%20o%20Google%20encontrem.).

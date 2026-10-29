@@ -38,4 +38,4 @@ Pergunte se você poderá editar o site sozinho ou se vai depender do desenvolve
 - Como fica a hospedagem e quem é o dono do site?
 - O que está e o que não está incluído na proposta?
 
-Se você está em Novo Hamburgo ou na região e quer uma estimativa para o seu caso, [fale com a Metinger Tech](/#contato).
+Se você está em Novo Hamburgo ou na região e quer uma estimativa para o seu caso, [fale com a Metinger Tech no WhatsApp](https://wa.me/5551993022314?text=Ol%C3%A1%21%20Li%20o%20artigo%20sobre%20quanto%20custa%20um%20site%20e%20quero%20um%20or%C3%A7amento%20para%20a%20minha%20empresa.).
