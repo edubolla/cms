@@ -1,0 +1,110 @@
+/* Tema do painel /admin com as cores do site da Metinger Tech.
+   O Decap gera as classes por componente (ex.: "...-SidebarContainer"),
+   por isso usamos seletores por nome parcial. Versão do Decap fixada no index.html. */
+
+:root {
+  --bg: #07111f;
+  --bg-2: #0a1729;
+  --surface: #0d1e35;
+  --surface-2: #12283f;
+  --line: #1b3451;
+  --line-2: #2c4d75;
+  --text: #f4f8ff;
+  --muted: #a9bad0;
+  --accent: #8dbbff;
+  --accent-soft: rgba(141, 187, 255, 0.14);
+  color-scheme: dark;
+}
+
+html, body { background: var(--bg) !important; color: var(--text); font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+#nc-root, .ReactModal__Content { color: var(--text); }
+#nc-root :is(h1, h2, h3, h4, label, p, li, span, div, legend, summary, td, th, strong, em, small) { color: var(--text); }
+#nc-root ::selection { background: rgba(141, 187, 255, 0.35); }
+
+/* ── Cabeçalho ─────────────────────────────── */
+#nc-root header[class*="AppHeader"] { background: var(--bg-2); border-bottom: 1px solid var(--line); box-shadow: none; }
+#nc-root header[class*="AppHeader"] a, #nc-root header[class*="AppHeader"] button { color: var(--muted); }
+#nc-root header[class*="AppHeader"] a:hover, #nc-root header[class*="AppHeader"] a[class*="active"] { color: var(--text); }
+#nc-root header[class*="AppHeader"] svg { color: currentColor; }
+
+/* ── Cartões e barra lateral ───────────────── */
+#nc-root [class*="card-card"] { background: var(--surface); border: 1px solid var(--line); box-shadow: none; border-radius: 14px; }
+#nc-root aside[class*="SidebarContainer"] { background: var(--surface); }
+#nc-root [class*="SidebarHeading"] { color: var(--text); font-weight: 600; letter-spacing: -0.01em; }
+#nc-root aside a[class*="SidebarNavLink"] { background: transparent; color: var(--muted); border-left: 3px solid transparent; border-radius: 8px; transition: background 0.2s, color 0.2s; }
+#nc-root aside a[class*="SidebarNavLink"]:hover { background: var(--surface-2); color: var(--text); }
+#nc-root aside a.sidebar-active { background: var(--accent-soft); color: var(--accent); border-left-color: var(--accent); }
+#nc-root aside a.sidebar-active * { color: var(--accent); }
+
+/* ── Lista de entradas ─────────────────────── */
+#nc-root [class*="ListCard"] { transition: border-color 0.2s, transform 0.2s; }
+#nc-root [class*="ListCard"]:hover { border-color: var(--line-2); transform: translateY(-1px); }
+#nc-root [class*="ListCard"] * { color: var(--text); }
+#nc-root [class*="CollectionTopContainer"] h1, #nc-root [class*="CollectionTopRow"] * { color: var(--text); }
+
+/* ── Campos de texto ───────────────────────── */
+#nc-root input:not([type="checkbox"]):not([type="radio"]), #nc-root textarea, #nc-root select,
+#nc-root [class*="SearchInput"], #nc-root [class*="TextControl"] {
+  background: var(--bg) !important; color: var(--text) !important; border: 1px solid var(--line) !important; border-radius: 10px !important; box-shadow: none !important;
+}
+#nc-root input:focus, #nc-root textarea:focus, #nc-root select:focus { border-color: var(--accent) !important; box-shadow: 0 0 0 3px var(--accent-soft) !important; outline: none; }
+#nc-root ::placeholder { color: #6f86a3 !important; }
+
+/* ── Editor ────────────────────────────────── */
+#nc-root [class*="EditorContainer"] { background: var(--bg); }
+#nc-root [class*="ToolbarContainer"] { background: var(--bg-2); border-bottom: 1px solid var(--line); box-shadow: none; }
+#nc-root [class*="StyledSplitPane"] { background: var(--bg); }
+#nc-root [class*="FieldLabel"] { background: var(--surface-2); color: var(--muted); border-radius: 8px 8px 0 0; font-weight: 600; letter-spacing: 0.01em; }
+#nc-root [class*="NestedObjectLabel"], #nc-root [class*="TopBar"] { background: var(--surface-2); color: var(--text); border-color: var(--line); }
+#nc-root [class*="ObjectWidget"], #nc-root [class*="StyledObjectField"], #nc-root [class*="ListItem"] { border-color: var(--line); }
+#nc-root [class*="AddButton"] { background: var(--surface-2); color: var(--text); border: 1px solid var(--line); border-radius: 10px; }
+#nc-root [class*="AddButton"]:hover { border-color: var(--accent); }
+
+/* ── Botões ────────────────────────────────── */
+#nc-root button[class*="ToolbarButton"], #nc-root [class*="ToolbarDropdown"] button { border-radius: 999px; font-weight: 600; }
+#nc-root [class*="PublishedButton"], #nc-root [class*="publishedButton"] { background: rgba(94, 214, 140, 0.14); color: #7ee2a4; }
+#nc-root [class*="PublishedButton"] *, #nc-root [class*="publishedButton"] * { color: #7ee2a4; }
+#nc-root [class*="EditorToggle"] { background: var(--surface-2); color: var(--accent); border: 1px solid var(--line); }
+
+/* ── Prévia e mídia ────────────────────────── */
+#nc-root [class*="PreviewPaneFrame"] { background: #fff; border-radius: 12px; }
+#nc-root [class*="MediaLibrary"], .ReactModal__Content { background: var(--surface) !important; border: 1px solid var(--line); border-radius: 14px; }
+.ReactModal__Overlay { background: rgba(3, 8, 15, 0.7) !important; }
+
+/* ── Tela de login ─────────────────────────── */
+#nc-root [class*="AuthenticationPage"] { background: var(--bg); }
+#nc-root [class*="AuthenticationPage"] img { max-width: 220px; height: auto; }
+#nc-root [class*="AuthenticationPage"] button[class*="LoginButton"], #nc-root [class*="AuthenticationPage"] button { background: var(--text); color: var(--bg); border-radius: 999px; font-weight: 600; }
+#nc-root [class*="AuthenticationPage"] button * { color: var(--bg); }
+#nc-root [class*="AuthenticationPage"] a { color: var(--muted); }
+
+/* ── Ajustes finos (blocos de objeto, bordas, dicas) ───────────────────
+   As três classes "css-xxxx" abaixo não têm nome de componente; os códigos
+   são estáveis enquanto a versão do Decap (index.html) não mudar. */
+#nc-root .css-5hiu9n, #nc-root .css-1es1p1t, #nc-root .css-dcc2zv { background: var(--surface) !important; border-color: var(--line) !important; border-radius: 12px; }
+#nc-root [class*="ToolbarSection"] { border-color: var(--line) !important; }
+#nc-root [class*="AvatarPlaceholderIcon"], #nc-root [class*="avatarImage"] { background: var(--surface-2); color: var(--muted); }
+#nc-root [class*="ControlHint"], #nc-root [class*="FieldHint"], #nc-root [class*="Hint"] { color: var(--muted) !important; opacity: 0.85; }
+#nc-root [class*="FieldLabel"] { border: 0 !important; }
+#nc-root [class*="ObjectWidgetTopBar"] { background: var(--surface-2); }
+#nc-root [class*="FieldLabel"]::before, #nc-root [class*="FieldLabel"]::after { background: var(--surface-2) !important; }
+#nc-root .css-83wr9v, #nc-root .css-lshhuz, #nc-root [class*="DateTimeControl"] { background: var(--surface) !important; border: 1px solid var(--line) !important; border-radius: 10px; }
+#nc-root [class*="FileWidgetButton"], #nc-root [class*="FileWidgetButtonSkipImage"] { background: var(--accent-soft) !important; color: var(--accent) !important; border-radius: 8px; border: 0; }
+#nc-root [class*="FileWidgetButton"] * { color: var(--accent) !important; }
+#nc-root [class*="DeleteButton"] { background: rgba(255, 120, 120, 0.14) !important; color: #ff9f9f !important; }
+#nc-root [class*="DeleteButton"] * { color: #ff9f9f !important; }
+#nc-root [class*="ToolbarDropdown"] [class*="Button"], #nc-root [class*="DropdownButton"] { background: var(--surface-2); color: var(--text); }
+
+/* ── Janelas (biblioteca de mídia, confirmações): ficam fora de #nc-root ── */
+.ReactModalPortal :is(h1, h2, h3, h4, label, p, li, span, div, strong, small) { color: var(--text); }
+.ReactModalPortal [class*="StyledModal"] { background: var(--surface) !important; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5); }
+.ReactModalPortal input:not([type="checkbox"]) { background: var(--bg) !important; color: var(--text) !important; border: 1px solid var(--line) !important; border-radius: 10px !important; box-shadow: none !important; }
+.ReactModalPortal input:focus { border-color: var(--accent) !important; box-shadow: 0 0 0 3px var(--accent-soft) !important; outline: none; }
+.ReactModalPortal button[class*="ActionButton"], .ReactModalPortal button[class*="CloseButton"] { background: var(--surface-2) !important; color: var(--text) !important; border: 1px solid var(--line); border-radius: 999px; }
+.ReactModalPortal button[class*="ActionButton"] *, .ReactModalPortal button[class*="CloseButton"] * { color: var(--text) !important; }
+.ReactModalPortal button[class*="DeleteButton"] { background: rgba(255, 120, 120, 0.14) !important; color: #ff9f9f !important; border-radius: 999px; }
+.ReactModalPortal button[class*="DeleteButton"] * { color: #ff9f9f !important; }
+.ReactModalPortal [class*="CardImageWrapper"] { background: var(--bg-2) !important; background-image: none !important; }
+.ReactModalPortal [class*="Card"] { border-color: var(--line); }
+.ReactModalPortal [class*="Card"]:not([class*="Image"]) { background: var(--surface-2); }
+.ReactModalPortal ::placeholder { color: #6f86a3 !important; }

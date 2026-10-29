@@ -1,0 +1,12 @@
+/* Estilo da prévia do post dentro do painel (espelha o blog do site) */
+html, body { margin: 0; background: #07111f; color: #f4f8ff; font: 400 17px/1.65 system-ui, -apple-system, 'Segoe UI', sans-serif; }
+.preview { max-width: 42rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+.preview h1 { font-size: 2rem; line-height: 1.15; letter-spacing: -0.02em; margin: 0.4rem 0 1rem; }
+.preview h2 { font-size: 1.5rem; margin: 2.2rem 0 0.7rem; letter-spacing: -0.01em; }
+.preview .meta { color: #a9bad0; font-size: 0.85rem; margin: 0; }
+.preview p, .preview li { color: #d3deec; }
+.preview a { color: #8dbbff; text-decoration: underline; text-underline-offset: 3px; }
+.preview img { max-width: 100%; border-radius: 12px; margin: 1.2rem 0; }
+.preview blockquote { margin: 1.4rem 0; padding-left: 1.1rem; border-left: 3px solid #8dbbff; color: #f4f8ff; }
+.preview .cover { margin-bottom: 1rem; }
+.preview .draft { display: inline-block; background: rgba(255, 190, 90, 0.15); color: #ffc66d; border-radius: 999px; padding: 0.1rem 0.7rem; font-size: 0.8rem; margin-left: 0.5rem; }

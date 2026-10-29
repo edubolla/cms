@@ -18,6 +18,7 @@ local_backend: true
 media_folder: public/uploads
 public_folder: /uploads
 
+logo_url: /brand/logo.png
 site_url: https://cms-ivory-chi.vercel.app
 display_url: https://cms-ivory-chi.vercel.app
 locale: pt
@@ -26,6 +27,8 @@ collections:
   # ── Textos da página inicial e dados da empresa (arquivos únicos) ─────────
   - name: pagina
     label: Página inicial
+    editor:
+      preview: false      # sem painel de prévia ao lado: o formulário ocupa a tela toda
     files:
       - label: Textos da home
         name: home
@@ -34,6 +37,7 @@ collections:
           - label: Google (título e descrição que aparecem na busca)
             name: seo
             widget: object
+            collapsed: true
             fields:
               - { label: Título da página, name: title, widget: string, hint: "Ideal: até 60 caracteres, com 'Criação de Sites em Novo Hamburgo'" }
               - { label: Descrição, name: description, widget: text, hint: "Ideal: até 160 caracteres" }
@@ -41,6 +45,7 @@ collections:
           - label: Topo (hero)
             name: hero
             widget: object
+            collapsed: false
             fields:
               - { label: Frase pequena acima do título, name: eyebrow, widget: string }
               - { label: Início do título, name: titleStart, widget: string }
@@ -52,6 +57,7 @@ collections:
           - label: Serviços
             name: services
             widget: object
+            collapsed: true
             fields:
               - { label: Frase pequena, name: eyebrow, widget: string }
               - { label: Título, name: title, widget: string }
@@ -66,6 +72,7 @@ collections:
           - label: Google e IA (visibilidade)
             name: visibility
             widget: object
+            collapsed: true
             fields:
               - { label: Frase pequena, name: eyebrow, widget: string }
               - { label: Título, name: title, widget: string }
@@ -90,6 +97,7 @@ collections:
           - label: Diferenciais
             name: differentials
             widget: object
+            collapsed: true
             fields:
               - { label: Frase pequena, name: eyebrow, widget: string }
               - { label: Título, name: title, widget: string }
@@ -104,6 +112,7 @@ collections:
           - label: Como trabalhamos
             name: process
             widget: object
+            collapsed: true
             fields:
               - { label: Frase pequena, name: eyebrow, widget: string }
               - { label: Título, name: title, widget: string }
@@ -118,6 +127,7 @@ collections:
           - label: Regiões atendidas
             name: regions
             widget: object
+            collapsed: true
             fields:
               - { label: Frase pequena, name: eyebrow, widget: string }
               - { label: Título, name: title, widget: string }
@@ -133,6 +143,7 @@ collections:
           - label: Perguntas frequentes
             name: faq
             widget: object
+            collapsed: true
             fields:
               - { label: Frase pequena, name: eyebrow, widget: string }
               - { label: Título, name: title, widget: string }
@@ -147,6 +158,7 @@ collections:
           - label: Chamada final
             name: cta
             widget: object
+            collapsed: true
             fields:
               - { label: Título, name: title, widget: string }
               - { label: Texto, name: text, widget: text }
