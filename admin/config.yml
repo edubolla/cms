@@ -15,8 +15,8 @@ local_backend: true
 media_folder: uploads        # onde as imagens são gravadas no repositório
 public_folder: /uploads      # como as imagens são referenciadas no site
 
-site_url: https://edubolla.github.io/cms
-display_url: https://edubolla.github.io/cms
+site_url: https://cms-ivory-chi.vercel.app
+display_url: https://cms-ivory-chi.vercel.app
 locale: pt
 
 collections:
