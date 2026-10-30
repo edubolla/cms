@@ -11,9 +11,10 @@ interface Props {
   description: string;
   jsonLd?: object[];
   noindex?: boolean;
+  bare?: boolean;
   type?: 'website' | 'article';
 }
-const { title, description, jsonLd = [], noindex = false, type = 'website' } = Astro.props;
+const { title, description, jsonLd = [], noindex = false, bare = false, type = 'website' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL('/og.png', Astro.site).href;
 ---
@@ -42,9 +43,9 @@ const ogImage = new URL('/og.png', Astro.site).href;
   </head>
   <body>
     <a class="skip" href="#conteudo">Ir para o conteúdo</a>
-    <Header />
+    {!bare && <Header />}
     <main id="conteudo"><slot /></main>
-    <Footer />
+    {!bare && <Footer />}
     <script>
       import '../scripts/motion';
     </script>

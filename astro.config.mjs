@@ -15,6 +15,6 @@ const adminIndex = {
 // Troque pelo domínio definitivo (ex.: https://metingertech.com.br) quando apontar o DNS.
 export default defineConfig({
   site: 'https://cms-ivory-chi.vercel.app',
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: page => !page.includes('/calculadora') })],
   vite: { plugins: [adminIndex] },
 });

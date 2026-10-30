@@ -1,0 +1,340 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact, site } from '../lib/contact';
+
+// Cenários de partida. O custo por lead (CPL) é uma referência para simular e pode ser
+// alterado na tela. Não são resultados garantidos nem médias de mercado.
+const scenarios = [
+  { key: 'otimo', name: 'Ótimo', cpl: 12, color: '#5eead4', desc: 'Oferta forte, página afinada e pouca concorrência. Lead barato.' },
+  { key: 'bom', name: 'Bom', cpl: 25, color: '#8dbbff', desc: 'Campanha bem ajustada, com bom desempenho na maior parte do mês.' },
+  { key: 'medio', name: 'Médio', cpl: 45, color: '#fbbf24', desc: 'Leads mais ou menos: concorrência normal e ajustes ainda em andamento.' },
+  { key: 'pessimista', name: 'Pessimista', cpl: 90, color: '#fb7185', desc: 'Cenário muito conservador: mercado caro e resultado abaixo do esperado.' },
+];
+const tiers = [1000, 2500, 5000, 10000];
+---
+<Base
+  title="Calculadora de investimento e leads | Metinger Tech"
+  description="Simule quantos leads por mês o seu investimento em anúncios pode gerar em quatro cenários."
+  noindex
+  bare
+>
+  <div class="calc" data-calc>
+    <header class="calc__top container">
+      <a href="/" aria-label={`${site.name}, página inicial`}><img class="calc__logo" src="/brand/logo.png" alt={site.name} width="150" height="87" /></a>
+      <span class="calc__tag">Simulador de investimento</span>
+    </header>
+
+    <section class="container calc__hero">
+      <p class="eyebrow">Projeção de leads</p>
+      <h1 data-title>Quantos leads o seu investimento pode gerar por mês?</h1>
+      <p class="lead">Defina o investimento mensal em anúncios e compare quatro cenários, do mais otimista ao mais conservador.</p>
+    </section>
+
+    <section class="container calc__panel" aria-labelledby="inv-label">
+      <div class="calc__inputs">
+        <div class="field field--money">
+          <label id="inv-label" for="inv">Investimento mensal em anúncios</label>
+          <div class="money"><span>R$</span><input id="inv" type="text" inputmode="numeric" autocomplete="off" value="3.000" data-inv /></div>
+          <input class="range" type="range" min="500" max="30000" step="100" value="3000" aria-label="Ajustar investimento mensal" data-range />
+          <div class="chips" role="group" aria-label="Valores rápidos">
+            {tiers.map(t => <button type="button" class="chip" data-chip={t}>R$ {t.toLocaleString('pt-BR')}</button>)}
+          </div>
+        </div>
+        <div class="field">
+          <label for="client">Nome do cliente <span class="muted">(opcional)</span></label>
+          <input id="client" class="text" type="text" placeholder="Ex.: GDD Móveis Modernos" maxlength="60" data-client />
+          <p class="hint">Aparece no título para a apresentação.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" aria-label="Cenários">
+      <div class="scen">
+        {scenarios.map(s => (
+          <article class="scard" style={`--c:${s.color}`} data-scen={s.key}>
+            <header>
+              <span class="scard__dot"></span>
+              <h2>{s.name}</h2>
+            </header>
+            <p class="scard__num"><span data-leads>0</span><small>leads / mês</small></p>
+            <div class="bar" aria-hidden="true"><i data-bar></i></div>
+            <label class="scard__cpl">Custo por lead
+              <span class="money money--s"><span>R$</span><input type="text" inputmode="decimal" autocomplete="off" value={String(s.cpl)} aria-label={`Custo por lead no cenário ${s.name}`} data-cpl /></span>
+            </label>
+            <p class="scard__desc">{s.desc}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="container calc__block">
+      <h2>Como os leads crescem com o investimento</h2>
+      <p class="muted">A linha vertical marca o investimento escolhido.</p>
+      <div class="chart" data-chart role="img" aria-label="Gráfico de leads por mês conforme o investimento, nos quatro cenários"></div>
+      <ul class="legend plain">
+        {scenarios.map(s => <li style={`--c:${s.color}`}><i></i>{s.name}</li>)}
+      </ul>
+    </section>
+
+    <section class="container calc__block">
+      <h2>Faixas de investimento</h2>
+      <p class="muted">Leads por mês em cada cenário, com os custos por lead definidos acima.</p>
+      <div class="tablewrap">
+        <table class="tbl" data-table>
+          <thead>
+            <tr><th>Investimento / mês</th>{scenarios.map(s => <th style={`--c:${s.color}`}>{s.name}</th>)}</tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="container calc__block calc__foot">
+      <p class="note">
+        Simulação ilustrativa, calculada como investimento ÷ custo por lead. O resultado real depende do segmento,
+        da concorrência, da oferta, da página de destino e do orçamento de cada mês. Os valores não são promessa de resultado.
+        O investimento em anúncios é pago direto à plataforma (Google, Meta etc.).
+      </p>
+      <div class="actions">
+        <a class="btn" href={contact.href} target={contact.external ? '_blank' : undefined} rel={contact.external ? 'noopener' : undefined}>Falar com a Metinger Tech</a>
+        <button class="btn btn--ghost" type="button" data-copy>Copiar link desta simulação</button>
+        <button class="btn btn--ghost" type="button" data-print>Salvar em PDF</button>
+      </div>
+      <p class="muted calc__copyright">{site.name} · {site.city}/{site.state}</p>
+    </section>
+  </div>
+</Base>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-calc]')!;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+  const num = new Intl.NumberFormat('pt-BR');
+
+  const invInput = root.querySelector<HTMLInputElement>('[data-inv]')!;
+  const range = root.querySelector<HTMLInputElement>('[data-range]')!;
+  const client = root.querySelector<HTMLInputElement>('[data-client]')!;
+  const title = root.querySelector<HTMLElement>('[data-title]')!;
+  const chart = root.querySelector<HTMLElement>('[data-chart]')!;
+  const tbody = root.querySelector<HTMLElement>('[data-table] tbody')!;
+  const baseTitle = title.textContent!;
+
+  type Scen = { key: string; color: string; name: string; card: HTMLElement; cpl: HTMLInputElement; leads: HTMLElement; bar: HTMLElement };
+  const scens: Scen[] = [...root.querySelectorAll<HTMLElement>('[data-scen]')].map(card => ({
+    key: card.dataset.scen!,
+    color: getComputedStyle(card).getPropertyValue('--c').trim(),
+    name: card.querySelector('h2')!.textContent!,
+    card,
+    cpl: card.querySelector<HTMLInputElement>('[data-cpl]')!,
+    leads: card.querySelector<HTMLElement>('[data-leads]')!,
+    bar: card.querySelector<HTMLElement>('[data-bar]')!,
+  }));
+
+  const parse = (v: string) => {
+    const n = parseFloat(v.replace(/\./g, '').replace(',', '.').replace(/[^\d.]/g, ''));
+    return Number.isFinite(n) ? n : 0;
+  };
+  const getInv = () => Math.max(0, Math.round(parse(invInput.value)));
+  // O CPL aceita vírgula ou ponto decimal ("12,5" ou "12.5").
+  const parseCpl = (s: Scen) => {
+    const n = parseFloat(s.cpl.value.replace(',', '.'));
+    return Number.isFinite(n) && n > 0 ? n : 0.01;
+  };
+  const leadsFor = (inv: number, cpl: number) => Math.floor(inv / cpl);
+
+  // Contagem animada dos números
+  const shown = new Map<HTMLElement, number>();
+  const raf = new Map<HTMLElement, number>();
+  function countTo(el: HTMLElement, to: number) {
+    const from = shown.get(el) ?? 0;
+    shown.set(el, to);
+    cancelAnimationFrame(raf.get(el) ?? 0);
+    if (reduced || from === to) { el.textContent = num.format(to); return; }
+    const t0 = performance.now(), dur = 600;
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = num.format(Math.round(from + (to - from) * e));
+      if (p < 1) raf.set(el, requestAnimationFrame(tick));
+    };
+    raf.set(el, requestAnimationFrame(tick));
+  }
+
+  function niceMax(v: number) {
+    const mag = Math.pow(10, Math.floor(Math.log10(v)));
+    const n = v / mag;
+    return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * mag;
+  }
+
+  function drawChart(inv: number, cpls: number[]) {
+    const W = 760, H = 350, L = 56, R = 24, T = 20, B = 56;
+    const xMax = niceMax(Math.max(inv * 1.6, 1000));
+    const yRaw = xMax / Math.min(...cpls);
+    const yMax = niceMax(yRaw);
+    const x = (v: number) => L + (v / xMax) * (W - L - R);
+    const y = (v: number) => T + (1 - v / yMax) * (H - T - B);
+    const grid: string[] = [];
+    for (let i = 0; i <= 4; i++) {
+      const yv = (yMax / 4) * i, xv = (xMax / 4) * i;
+      grid.push(`<line x1="${L}" x2="${W - R}" y1="${y(yv)}" y2="${y(yv)}" class="g"/>`);
+      grid.push(`<text x="${L - 10}" y="${y(yv) + 4}" text-anchor="end" class="t">${num.format(Math.round(yv))}</text>`);
+      grid.push(`<text x="${x(xv)}" y="${H - B + 20}" text-anchor="middle" class="t">${xv >= 1000 ? num.format(xv / 1000) + ' mil' : num.format(xv)}</text>`);
+    }
+    const lines = scens.map((s, i) => `<line x1="${x(0)}" y1="${y(0)}" x2="${x(xMax)}" y2="${y(xMax / cpls[i])}" stroke="${s.color}" stroke-width="3" stroke-linecap="round" class="ln"/>`);
+    const dots = scens.map((s, i) => {
+      const lv = inv / cpls[i];
+      return `<circle cx="${x(inv)}" cy="${y(lv)}" r="6" fill="${s.color}" stroke="#07111f" stroke-width="3"/>`;
+    });
+    const mark = `<line x1="${x(inv)}" x2="${x(inv)}" y1="${T}" y2="${H - B}" class="mk"/>
+      <text x="${Math.min(x(inv) + 8, W - R - 70)}" y="${T + 12}" class="mt">${brl.format(inv)}</text>`;
+    chart.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
+      <text x="${L}" y="12" class="t">Leads / mês</text>
+      ${grid.join('')}${lines.join('')}${mark}${dots.join('')}
+      <text x="${W - R}" y="${H - 4}" text-anchor="end" class="t">Investimento mensal (R$)</text></svg>`;
+  }
+
+  function drawTable(inv: number, cpls: number[]) {
+    const tierEls = [...root.querySelectorAll<HTMLElement>('[data-chip]')].map(c => Number(c.dataset.chip));
+    const rows = [...new Set([...tierEls, inv].filter(v => v > 0))].sort((a, b) => a - b);
+    tbody.innerHTML = rows.map(v =>
+      `<tr${v === inv ? ' class="is-now"' : ''}><th scope="row">${brl.format(v)}${v === inv ? ' <em>escolhido</em>' : ''}</th>${cpls.map(c => `<td>${num.format(leadsFor(v, c))}</td>`).join('')}</tr>`).join('');
+  }
+
+  function update(syncRange = true) {
+    const inv = getInv();
+    const cpls = scens.map(parseCpl);
+    if (syncRange) range.value = String(Math.min(Math.max(inv, 500), 30000));
+    const leads = cpls.map(c => leadsFor(inv, c));
+    const top = Math.max(1, ...leads);
+    scens.forEach((s, i) => {
+      countTo(s.leads, leads[i]);
+      s.bar.style.width = `${(leads[i] / top) * 100}%`;
+    });
+    root.querySelectorAll<HTMLElement>('[data-chip]').forEach(c => c.classList.toggle('is-on', Number(c.dataset.chip) === inv));
+    title.textContent = client.value.trim() ? `Projeção de leads para ${client.value.trim()}` : baseTitle;
+    drawChart(inv, cpls);
+    drawTable(inv, cpls);
+    chart.setAttribute('aria-label', `Leads por mês com investimento de ${brl.format(inv)}: ` + scens.map((s, i) => `${s.name} ${leads[i]}`).join(', '));
+    saveUrl(inv);
+  }
+
+  // O link guarda os valores, para reabrir a mesma simulação depois.
+  function saveUrl(inv: number) {
+    const p = new URLSearchParams();
+    p.set('inv', String(inv));
+    p.set('cpl', scens.map(parseCpl).join(','));
+    if (client.value.trim()) p.set('cliente', client.value.trim());
+    history.replaceState(null, '', `${location.pathname}?${p}`);
+  }
+  function loadUrl() {
+    const p = new URLSearchParams(location.search);
+    const inv = Number(p.get('inv'));
+    if (inv > 0) invInput.value = num.format(Math.round(inv));
+    const cpl = p.get('cpl')?.split(',');
+    cpl?.forEach((v, i) => { if (scens[i] && Number(v) > 0) scens[i].cpl.value = String(v).replace('.', ','); });
+    if (p.get('cliente')) client.value = p.get('cliente')!.slice(0, 60);
+  }
+
+  invInput.addEventListener('input', () => {
+    const digits = invInput.value.replace(/\D/g, '');
+    invInput.value = digits ? num.format(Number(digits)) : '';
+    update();
+  });
+  range.addEventListener('input', () => { invInput.value = num.format(Number(range.value)); update(false); });
+  client.addEventListener('input', () => update());
+  scens.forEach(s => s.cpl.addEventListener('input', () => update()));
+  root.querySelectorAll<HTMLButtonElement>('[data-chip]').forEach(c =>
+    c.addEventListener('click', () => { invInput.value = num.format(Number(c.dataset.chip)); update(); }));
+
+  const copy = root.querySelector<HTMLButtonElement>('[data-copy]')!;
+  copy.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(location.href); copy.textContent = 'Link copiado ✓'; }
+    catch { copy.textContent = 'Copie o endereço do navegador'; }
+    setTimeout(() => (copy.textContent = 'Copiar link desta simulação'), 2200);
+  });
+  root.querySelector('[data-print]')!.addEventListener('click', () => print());
+
+  loadUrl();
+  update();
+</script>
+
+<style is:global>
+  .calc { padding-bottom: 5rem; background: radial-gradient(60% 40% at 50% 0%, rgba(141, 187, 255, 0.10), transparent 70%); }
+  .calc__top { display: flex; align-items: center; justify-content: space-between; padding-block: 1.5rem; }
+  .calc__logo { width: 150px; height: auto; }
+  .calc__tag { color: var(--muted); font-size: 0.82rem; letter-spacing: 0.16em; text-transform: uppercase; }
+  .calc__hero { padding-block: 2.5rem 2rem; }
+  .calc__hero h1 { font-size: clamp(1.9rem, 4.6vw, 3.4rem); max-width: 22ch; }
+  .calc__hero .lead { margin-top: 1.25rem; }
+
+  .calc__panel { margin-bottom: 1.5rem; }
+  .calc__inputs { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem; padding: 1.75rem; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
+  .field label { display: block; font-size: 0.9rem; color: var(--muted); margin-bottom: 0.6rem; }
+  .money { display: flex; align-items: baseline; gap: 0.6rem; border-bottom: 2px solid var(--line); padding-bottom: 0.3rem; transition: border-color 0.2s; }
+  .money:focus-within { border-color: var(--accent); }
+  .money > span { font-family: var(--font-head); color: var(--accent); font-size: 1.4rem; }
+  .money input { width: 100%; min-width: 0; background: none; border: 0; outline: 0; color: var(--text); font: 600 clamp(2.2rem, 6vw, 3.4rem)/1.1 var(--font-head); letter-spacing: -0.02em; }
+  .range { width: 100%; margin: 1.4rem 0 1rem; accent-color: var(--accent); height: 28px; cursor: pointer; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .chip { background: transparent; border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 0.4rem 0.95rem; font: inherit; font-size: 0.88rem; cursor: pointer; transition: all 0.2s; }
+  .chip:hover { color: var(--text); border-color: var(--muted); }
+  .chip.is-on { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+  .text { width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; color: var(--text); padding: 0.85rem 1rem; font: inherit; }
+  .text:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .hint { font-size: 0.82rem; color: var(--muted); margin-top: 0.5rem; }
+
+  .scen { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .scard { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--c); border-radius: 18px; padding: 1.4rem 1.25rem; display: flex; flex-direction: column; gap: 0.9rem; }
+  .scard header { display: flex; align-items: center; gap: 0.6rem; }
+  .scard h2 { font-size: 1.05rem; }
+  .scard__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); box-shadow: 0 0 12px var(--c); }
+  .scard__num { display: flex; flex-direction: column; font: 600 clamp(2.4rem, 4.4vw, 3.2rem)/1 var(--font-head); letter-spacing: -0.03em; color: var(--c); }
+  .scard__num small { font: 400 0.85rem var(--font-body); color: var(--muted); letter-spacing: 0; margin-top: 0.4rem; }
+  .bar { height: 10px; border-radius: 99px; background: rgba(255, 255, 255, 0.06); overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--c); border-radius: 99px; transition: width 0.7s var(--ease); }
+  .scard__cpl { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; font-size: 0.85rem; color: var(--muted); }
+  .money--s { border-bottom-width: 1px; padding-bottom: 0.15rem; width: 6.2rem; }
+  .money--s > span { font: 500 0.9rem var(--font-body); color: var(--muted); }
+  .money--s input { font: 600 1rem var(--font-body); text-align: right; letter-spacing: 0; }
+  .scard__desc { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+  .calc__block { margin-top: 3.5rem; }
+  .calc__block h2 { font-size: clamp(1.3rem, 2.4vw, 1.8rem); margin-bottom: 0.4rem; }
+  .chart { margin-top: 1.25rem; padding: 1rem; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; }
+  .chart svg { width: 100%; height: auto; display: block; }
+  .chart .g { stroke: var(--line); stroke-width: 1; }
+  .chart .t { fill: var(--muted); font: 12px var(--font-body); }
+  .chart .mk { stroke: var(--text); stroke-width: 1.5; stroke-dasharray: 5 5; opacity: 0.7; }
+  .chart .mt { fill: var(--text); font: 600 13px var(--font-body); }
+  .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; margin-top: 1rem; grid-auto-flow: column; }
+  .legend li { display: flex; align-items: center; gap: 0.5rem; color: var(--muted); font-size: 0.9rem; }
+  .legend i { width: 18px; height: 4px; border-radius: 4px; background: var(--c); }
+
+  .tablewrap { margin-top: 1.25rem; overflow-x: auto; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+  .tbl { width: 100%; border-collapse: collapse; min-width: 520px; }
+  .tbl th, .tbl td { padding: 0.9rem 1.1rem; text-align: right; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+  .tbl thead th { font: 600 0.85rem var(--font-head); color: var(--c, var(--muted)); }
+  .tbl th:first-child { text-align: left; }
+  .tbl tbody th { font-weight: 500; }
+  .tbl tbody th em { font-style: normal; font-size: 0.72rem; color: var(--accent); border: 1px solid var(--accent); border-radius: 99px; padding: 0.1rem 0.5rem; margin-left: 0.4rem; }
+  .tbl tbody tr:last-child > * { border-bottom: 0; }
+  .tbl tr.is-now { background: var(--accent-soft); }
+
+  .calc__foot .note { color: var(--muted); font-size: 0.88rem; max-width: 56rem; }
+  .calc__foot .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+  .calc__copyright { margin-top: 2.5rem; font-size: 0.85rem; }
+
+  @media (max-width: 960px) { .scen { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px) {
+    .calc__inputs { grid-template-columns: 1fr; padding: 1.25rem; gap: 1.5rem; }
+    .calc__tag { display: none; }
+  }
+  @media (max-width: 480px) { .scen { grid-template-columns: 1fr; } .calc__foot .actions .btn { width: 100%; } }
+
+  @media print {
+    @page { margin: 12mm; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .actions, .range, .chips, .hint, .skip { display: none !important; }
+    .calc__block, .scard, .chart { break-inside: avoid; }
+    .scen { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>
